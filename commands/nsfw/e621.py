@@ -41,8 +41,6 @@ class e621(commands.Cog):
             postEmbed.set_author(name=ctx.author.display_name, url=Embed.Empty, icon_url=ctx.author.avatar_url)
             postEmbed.set_image(url=postUrl)
             postEmbed.set_footer(text=f"Tags: {content}" )
-    
-  
 
             await ctx.send(embed = postEmbed)
 
