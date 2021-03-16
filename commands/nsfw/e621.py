@@ -31,7 +31,20 @@ class e621(commands.Cog):
             res = requests.get(url, headers = user_agent)
             posts = json.loads(res.text)
             randpost = randint(0, len(posts["posts"]))
-            await ctx.send(posts["posts"][randpost]["file"]["url"])
+
+            post = posts["posts"][randPost]
+            postUrl = post["file"]["url"]
+  
+            # Create embed
+  
+            postEmbed = discord.Embed(color=discord.Color.blue())
+            postEmbed.set_author(name=ctx.author.display_name, url=Embed.Empty, icon_url=ctx.author.avatar_url)
+            postEmbed.set_image(url=postUrl)
+            postEmbed.set_footer(text=f"Tags: {content}" )
+    
+  
+
+            await ctx.send(embed = postEmbed)
 
 def setup(bot):
     bot.add_cog(e621(bot))
