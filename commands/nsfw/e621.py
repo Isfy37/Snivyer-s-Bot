@@ -17,7 +17,6 @@ class e621(commands.Cog):
            await ctx.send("This is a NSFW-only Command")
         else:
             randpage = randint(1, 30)
-            randpost = randint(0, 15)
             tags = content.split(",")
             url = "https://e621.net/posts.json?tags="
 
@@ -31,6 +30,7 @@ class e621(commands.Cog):
             print(url)
             res = requests.get(url, headers = user_agent)
             posts = json.loads(res.text)
+            randpost = randint(0, len(posts["posts"]))
             await ctx.send(posts["posts"][randpost]["file"]["url"])
 
 def setup(bot):
